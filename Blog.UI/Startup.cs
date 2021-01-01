@@ -36,12 +36,18 @@ namespace Blog.UI
       foreach(var articleFile in articleFiles)
       {
         var json = File.ReadAllText(articleFile);
-        var article = JsonConvert.DeserializeObject<Article>(json);
-        if(string.IsNullOrWhiteSpace(article.Content))
+        try
         {
-          article.Content = File.ReadAllText(articleFile.Replace("json","md"));
+          var article = JsonConvert.DeserializeObject<Article>(json);
+          if(string.IsNullOrWhiteSpace(article.Content))
+          {
+            article.Content = File.ReadAllText(articleFile.Replace("json", "md"));
+          }
+          articles.Add(article);
         }
-        articles.Add(article);
+        catch { }
+      }
+        
       }
       services.AddSingleton<IBlogRepository>(new BlogRepository(articles));
       services.AddMvc();
