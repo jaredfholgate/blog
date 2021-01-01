@@ -1,22 +1,25 @@
-﻿using System;
+﻿using Blog.Data;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Blog.Data;
 
 namespace Blog.Service
 {
     public class BlogService : IBlogService
     {
-      private readonly IDocumentDbRepository<Article> _blogRepository;
+        private readonly IBlogRepository _blogRepository;
 
-      public BlogService(IDocumentDbRepository<Article> blogRepository)
-      {
-        _blogRepository = blogRepository;
-      }
+        public BlogService(IBlogRepository blogRepository)
+        {
+          _blogRepository = blogRepository;
+        }
 
-      public async Task<IEnumerable<Article>> GetArticles()
-      {
-        return await _blogRepository.GetItemsAsync();
-      }
+        public IEnumerable<Article> GetArticles()
+        {
+          return _blogRepository.GetArticles();
+        }
+
+        public Article GetArticle(string id)
+        {
+          return _blogRepository.GetArticle(id);
+        }
     }
 }

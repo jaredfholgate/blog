@@ -24,9 +24,9 @@ namespace Blog.UI.Controllers
     }
 
     [AllowAnonymous]
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-      var articles = await _blogService.GetArticles();
+      var articles = _blogService.GetArticles();
       var articleSummary = GetArticleSummaryViewModel(articles);
       return View(articleSummary);
     }
@@ -43,7 +43,8 @@ namespace Blog.UI.Controllers
         Date = o.Date,
         Category = o.Category,
         Tags = o.Tags,
-        Published = o.Published
+        Published = o.Published,
+        UrlTitle = o.UrlTitle
       }));
       return articleSummary;
     }
@@ -63,7 +64,7 @@ namespace Blog.UI.Controllers
 
     [AllowAnonymous]
     [Route("sitemap.xml")]
-    public async Task<IActionResult> SiteMapXml()
+    public IActionResult SiteMapXml()
     {
       var siteMapTemplate = @"<?xml version=""1.0"" encoding=""UTF-8""?>
 <urlset
@@ -85,7 +86,7 @@ namespace Blog.UI.Controllers
 </urlset>";
 
 
-      var articles = await _blogService.GetArticles();
+      var articles = _blogService.GetArticles();
       var articleNodes = articles.Select(o => $@"<url>
   <loc>https://www.jaredholgate.co.uk/Blog/{o.Title.Replace(" ","-")}</loc>
   <changefreq>daily</changefreq>

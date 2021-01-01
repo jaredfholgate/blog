@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Blog.Data;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Blog.Data;
 
 namespace Blog.Service
 {
-    public interface IBlogService
+  public interface IBlogService
     {
-       Task<IEnumerable<Article>> GetArticles();
+       IEnumerable<Article> GetArticles();
+       Article GetArticle(string id);
     }
 }

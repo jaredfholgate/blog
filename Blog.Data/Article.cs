@@ -2,7 +2,7 @@
 
 namespace Blog.Data
 {
-    public class Article : IDocument
+    public class Article
     {
         public Article()
         {
@@ -19,5 +19,12 @@ namespace Blog.Data
         public string Author { get; set; }
         public bool Published { get; set; }
         public string ArticleType { get; set; }
+        public string UrlTitle 
+        { 
+          get
+          {
+            return Title.Replace(" ", "-").ToLower();
+          }
+        }
     }
 }

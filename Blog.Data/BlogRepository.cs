@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Data
 {
-    public class BlogRepository: IDocumentDbRepository<Article>
+    public class BlogRepository: IBlogRepository
     {        
         private readonly List<Article> _articles;
 
@@ -18,14 +18,14 @@ namespace Blog.Data
             _articles = articles;
         }
 
-        public async Task<Article> GetItemAsync(string id)
+        public Article GetArticle(string id)
         {
-            return new Article();
+           return _articles.Single(o => o.Id == id || o.UrlTitle == id);
         }
 
-        public async Task<IEnumerable<Article>> GetItemsAsync()
+        public IEnumerable<Article> GetArticles()
         {
-            return new List<Article>();
+          return _articles;
         }
     }
 }

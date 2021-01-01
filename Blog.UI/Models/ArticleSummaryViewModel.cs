@@ -15,5 +15,6 @@ namespace Blog.UI.Models
     public string Category { get; set; }
     public DateTime Date { get; set; }
     public bool Published { get; set; }
+    public string UrlTitle { get; set; } 
   }
 }

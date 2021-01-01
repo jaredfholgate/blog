@@ -1,47 +1,45 @@
-﻿using System.IO;
-using Blog.Data;
+﻿using Blog.Data;
 using Blog.Service;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Net.Http.Headers;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Blog.UI
 {
   public class Startup
   {
-    public Startup(IConfiguration configuration)
+    private readonly IWebHostEnvironment _env;
+
+    public Startup(IConfiguration configuration, IWebHostEnvironment env)
     {
       Configuration = configuration;
+      _env = env;
     }
 
     public IConfiguration Configuration { get; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
-    public void ConfigureServices(IServiceCollection services, IWebHostEnvironment env)
+    public void ConfigureServices(IServiceCollection services)
     {
       services.AddTransient<IBlogService, BlogService>();
-      var articleFiles = Directory.GetFiles(env.WebRootPath);
+      var articlesPath = Path.Combine(_env.WebRootPath, "articles");
+      var articleFiles = Directory.GetFiles(articlesPath);
       var articles = new List<Article>();
       foreach(var articleFile in articleFiles)
       {
-
+        var json = File.ReadAllText(articleFile);
+        var article = JsonConvert.DeserializeObject<Article>(json);
+        articles.Add(article);
       }
-      services.AddSingleton<IDocumentDbRepository<Article>>(new BlogRepository(articles));
+      services.AddSingleton<IBlogRepository>(new BlogRepository(articles));
       services.AddMvc();
     }
 
@@ -55,7 +53,6 @@ namespace Blog.UI
       else
       {
           app.UseExceptionHandler("/Home/Error");
-          // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
           app.UseHsts();
       }
       app.UseHttpsRedirection();

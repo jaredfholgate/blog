@@ -9,7 +9,9 @@
   <div class="jfh-container">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h2 class="jfh-header"><a asp-controller="Article" asp-action="Read" asp-route-title="@article.Id">@article.Title</a></h2>
+        <h2 class="jfh-header">
+          <a asp-controller="Article" asp-action="Read" asp-route-id="@article.UrlTitle">@article.Title</a>
+        </h2>
         <p>@Html.Raw(article.ParsedSummary)</p>
         <hr />
         <div class="row jfh-summary-meta">
