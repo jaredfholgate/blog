@@ -20,12 +20,12 @@ namespace Blog.Data
 
         public Article GetArticle(string id)
         {
-           return _articles.Single(o => o.Id == id || o.UrlTitle == id);
+           return _articles.Where(o => o.Published).Single(o => o.Id == id || o.UrlTitle == id);
         }
 
         public IEnumerable<Article> GetArticles()
         {
-          return _articles;
+          return _articles.Where(o => o.Published);
         }
     }
 }
