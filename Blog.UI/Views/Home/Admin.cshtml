@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+@model IEnumerable<ArticleSummaryViewModel>
+<a asp-controller="Article" asp-action="Edit">Add Article</a>
+@foreach (var article in Model)
+{
+  <div class="jfh-container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h2 class="jfh-header">
+          <a asp-controller="Article" asp-action="Read" asp-route-title="@article.Title.Replace(" ", "-")">@article.Title</a>
+          <a asp-controller="Article" asp-action="Edit" asp-route-id="@article.Id">[Edit]</a>
+        </h2>
+        <p>@Html.Raw(article.ParsedSummary)</p>
+        <hr />
+        <div class="row jfh-summary-meta">
+          <div class="col-sm-3">Published: @article.Date.ToString("dd MMMM yyyy")</div>
+          <div class="col-sm-3">Author: @article.Author</div>
+          <div class="col-sm-3">Category: @article.Category</div>
+          <div class="col-sm-3">Tags: @article.Tags</div>
+          <div class="col-sm-3">Publiched: @article.Published</div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

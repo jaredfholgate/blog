@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-Blog.UI-c8750755-8c24-450a-ae6d-45ae21b33444</UserSecretsId>
+    <WebProject_DirectoryAccessLevelKey>1</WebProject_DirectoryAccessLevelKey>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.13.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Data\Blog.Data.csproj" />
+    <ProjectReference Include="..\Blog.Service\Blog.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".well-known\acme-challenge\EmjqoCMyFoqAx5lUGLKHdjwKI5TUPi8b-LpFBzRY9Oo" CopyToPublishDirectory="Always" />
+    <Content Include=".well-known\acme-challenge\vVO8ptXEUMhg2pH7_JM94T0T748hsDr9Rh3s-rJ03yU" CopyToPublishDirectory="Always" />
+    <Content Include=".well-known\pki-validation\F796A6AE26D569DE20A4B4E81A18BB97.txt" CopyToPublishDirectory="Always" />
+    <Content Include=".well-known\pki-validation\4012CC1CDDB1F3A5ED1B466F10471CC6.txt" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+
+</Project>

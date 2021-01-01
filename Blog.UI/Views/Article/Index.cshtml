@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = Model.Article.Title;
+}
+@model ArticleReadViewModel
+
+<h1>@Model.Article.Title
+  @if (User.Identity.IsAuthenticated)
+  {
+    <a asp-controller="Article" asp-action="Edit" asp-route-id="@Model.Article.Id">[Edit]</a>
+  }
+  </h1>
+<hr/>
+<div class="row jfh-summary-meta">
+  <div class="col-sm-3">Published: @Model.Article.Date.ToString("dd MMMM yyyy")</div>
+  <div class="col-sm-3">Author: @Model.Article.Author</div>
+  <div class="col-sm-3">Category: @Model.Article.Category</div>
+  <div class="col-sm-3">Tags: @Model.Article.Tags</div>
+</div>
+<hr/>
+<div>@Html.Raw(Model.ParsedContent)</div>
