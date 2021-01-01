@@ -31,12 +31,16 @@ namespace Blog.UI
     {
       services.AddTransient<IBlogService, BlogService>();
       var articlesPath = Path.Combine(_env.WebRootPath, "articles");
-      var articleFiles = Directory.GetFiles(articlesPath);
+      var articleFiles = Directory.GetFiles(articlesPath,"*.json");
       var articles = new List<Article>();
       foreach(var articleFile in articleFiles)
       {
         var json = File.ReadAllText(articleFile);
         var article = JsonConvert.DeserializeObject<Article>(json);
+        if(string.IsNullOrWhiteSpace(article.Content))
+        {
+          article.Content = File.ReadAllText(articleFile.Replace("json","md"));
+        }
         articles.Add(article);
       }
       services.AddSingleton<IBlogRepository>(new BlogRepository(articles));

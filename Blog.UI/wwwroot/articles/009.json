@@ -1,12 +1,12 @@
 {
     "id": 9,
-    "title": "Back to Basics bits, bytes, hex and more",
+    "title": "Back to Basics: Take a Nibble or a Byte?",
     "date": "2021-01-01T18:50:00",
     "category": "Software Engineering",
     "tags": "Coding Basics,Hexadecimal,Bits,Nibbles,Bytes",
-    "summary": "A back to basics article on the basics of different data types and how they fit together.",
+    "summary": "A back to basics article on the binary data types and way to represent them.",
     "content": "",
     "author": "Jared Holgate",
-    "published": false,
+    "published": true,
     "articleType": "standard"
 }
