@@ -47,8 +47,7 @@ namespace Blog.UI
         }
         catch { }
       }
-        
-      }
+      
       services.AddSingleton<IBlogRepository>(new BlogRepository(articles));
       services.AddMvc();
     }
