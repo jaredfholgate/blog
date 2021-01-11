@@ -35,10 +35,8 @@
       <ul class="nav navbar-nav">
         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
         <li><a asp-area="" asp-controller="Home" asp-action="About">About Me</a></li>
-        @if (User.Identity.IsAuthenticated)
-        {
-          <li><a asp-area="" asp-controller="Home" asp-action="Admin">Admin</a></li>
-        }
+        <li><a asp-area="" asp-controller="Home" asp-action="Rss"><img src="/images/rss-icon.png" style="height:16px;" />&nbsp;Rss</a></li>
+        
       </ul>
       @await Html.PartialAsync("_LoginPartial")
     </div>
