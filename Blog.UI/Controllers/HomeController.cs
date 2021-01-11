@@ -40,7 +40,7 @@ namespace Blog.UI.Controllers
       var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's Blog Articles.", new Uri(url), "RSSUrl", DateTime.Now)
       {
         Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Jared Holgate"),
-        ImageUrl = new Uri($"{url}/image/HeaderImage.jpg", UriKind.Relative)
+        ImageUrl = new Uri($"{url}/image/HeaderImage.jpg")
       };
 
       var items = new List<SyndicationItem>();
