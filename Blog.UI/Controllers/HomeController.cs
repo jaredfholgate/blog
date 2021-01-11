@@ -36,7 +36,8 @@ namespace Blog.UI.Controllers
     [HttpGet]
     public IActionResult Rss()
     {
-      var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's blog articles.", new Uri("https://jaredholgate.co.uk/rss"), "RSSUrl", DateTime.Now)
+      var url = Url.Action("Index", "Home");
+      var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's Blog Articles.", new Uri(url,UriKind.Relative), "RSSUrl", DateTime.Now)
       {
         Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Jared Holgate")
       };
@@ -45,7 +46,7 @@ namespace Blog.UI.Controllers
       var postings = _blogService.GetArticles();
       foreach (var item in postings)
       {
-        var postUrl = Url.Action("Article", "Read", new { id = item.UrlTitle }, HttpContext.Request.Scheme);
+        var postUrl = Url.Action("Read", "Article", new { id = item.UrlTitle }, HttpContext.Request.Scheme);
         var title = item.Title;
         var description = item.Summary;
         items.Add(new SyndicationItem(title, description, new Uri(postUrl), item.UrlTitle, item.Date));
@@ -56,7 +57,7 @@ namespace Blog.UI.Controllers
         Encoding = Encoding.UTF8,
         NewLineHandling = NewLineHandling.Entitize,
         NewLineOnAttributes = true,
-        Indent = true
+        Indent = true        
       };
       using var stream = new MemoryStream();
       using (var xmlWriter = XmlWriter.Create(stream, settings))
