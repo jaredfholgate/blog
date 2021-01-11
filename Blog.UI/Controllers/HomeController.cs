@@ -50,7 +50,7 @@ namespace Blog.UI.Controllers
         var postUrl = Url.Action("Read", "Article", new { id = item.UrlTitle }, HttpContext.Request.Scheme);
         var title = item.Title;
         var description = item.Summary;
-        var syndicateItem = new SyndicationItem(title, description, new Uri(postUrl), item.UrlTitle, item.Date);
+        var syndicateItem = new SyndicationItem(title, description, new Uri(postUrl), item.Id, item.Date);
         syndicateItem.ElementExtensions.Add("pubDate", "", item.Date.ToLocalTime().ToString("r"));
         items.Add(syndicateItem);
       }
