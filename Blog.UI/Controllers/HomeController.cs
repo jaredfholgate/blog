@@ -37,19 +37,22 @@ namespace Blog.UI.Controllers
     public IActionResult Rss()
     {
       var url = Url.Action("Index", "Home");
-      var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's Blog Articles.", new Uri(url,UriKind.Relative), "RSSUrl", DateTime.Now)
+      var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's Blog Articles.", new Uri(url, UriKind.Relative), "RSSUrl", DateTime.Now)
       {
-        Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Jared Holgate")
+        Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Jared Holgate"),
+        ImageUrl = new Uri("/image/HeaderImage.jpg", UriKind.Relative)
       };
 
       var items = new List<SyndicationItem>();
-      var postings = _blogService.GetArticles();
+      var postings = _blogService.GetArticles().OrderByDescending(o => o.Date);
       foreach (var item in postings)
       {
         var postUrl = Url.Action("Read", "Article", new { id = item.UrlTitle }, HttpContext.Request.Scheme);
         var title = item.Title;
         var description = item.Summary;
-        items.Add(new SyndicationItem(title, description, new Uri(postUrl), item.UrlTitle, item.Date));
+        var syndicateItem = new SyndicationItem(title, description, new Uri(postUrl), item.UrlTitle, item.Date);
+        syndicateItem.ElementExtensions.Add("pubDate", "", item.Date.ToLocalTime().ToString("r"));
+        items.Add(syndicateItem);
       }
       feed.Items = items;
       var settings = new XmlWriterSettings
