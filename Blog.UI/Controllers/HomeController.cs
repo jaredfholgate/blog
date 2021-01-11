@@ -36,11 +36,11 @@ namespace Blog.UI.Controllers
     [HttpGet]
     public IActionResult Rss()
     {
-      var url = Url.Action("Index", "Home");
-      var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's Blog Articles.", new Uri(url, UriKind.Relative), "RSSUrl", DateTime.Now)
+      var url = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+      var feed = new SyndicationFeed("Jared Holgate Blog", "Jared Holgate's Blog Articles.", new Uri(url), "RSSUrl", DateTime.Now)
       {
         Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Jared Holgate"),
-        ImageUrl = new Uri("/image/HeaderImage.jpg", UriKind.Relative)
+        ImageUrl = new Uri($"{url}/image/HeaderImage.jpg", UriKind.Relative)
       };
 
       var items = new List<SyndicationItem>();
