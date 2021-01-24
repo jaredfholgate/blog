@@ -20,7 +20,7 @@ namespace Blog.Data
 
         public Article GetArticle(string id)
         {
-           return _articles.Where(o => o.Published).Single(o => o.Id == id || o.UrlTitle == id);
+           return _articles.Where(o => o.Published).Single(o => o.Id == id || o.UrlTitle == id.ToLower());
         }
 
         public IEnumerable<Article> GetArticles()
