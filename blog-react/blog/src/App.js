@@ -27,7 +27,10 @@ function App() {
             <Toggle theme={theme} toggleTheme={toggleTheme} />
           </div>
         </header>
-
+        <content>
+          Work in Progress!
+        </content>
+        
 
         <footer>
           <small>© Jared Holgate {new Date().getFullYear()}</small>
