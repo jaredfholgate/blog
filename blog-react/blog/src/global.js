@@ -6,12 +6,18 @@ export const GlobalStyles = createGlobalStyle`
   *::before {
     box-sizing: border-box;
   }
-  body {
+  header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-between;
+    padding: 2px;
+  }
+  alignLeft {
+
+  }
+  alignRight {
+
+  }
+  body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     padding: 0;
@@ -21,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   footer {
     position: absolute;
-    bottom: 5%;
+    bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
   }
