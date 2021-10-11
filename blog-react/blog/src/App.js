@@ -1,40 +1,58 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { useDarkMode } from './useDarkMode';
 import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { Navigation, Footer, Home, AboutMe } from "./components";
+
+import { useDarkMode } from './components/useDarkMode';
 import Toggle from './components/Toggle';
 
 function App() {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
-  if (!componentMounted) {
-    return <div />
-  };
-
   return (
     <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
-        <header>
-          <div className="alignLeft">
-            <large>Jared Holgate Blog</large>
+        <Router>
+          <div className="navigation">
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+              <div class="container">
+                <Link class="navbar-brand" to="/">
+                  Jared Holgate's Blog
+                </Link>
+                <div>
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <Link class="nav-link" to="/">
+                        Home
+                      </Link>
+                    </li>
+                    <li class="nav-item">
+                      <Link class="nav-link" to="/about">
+                        About Me
+                      </Link>
+                    </li>
+                    <li>
+                    <Toggle theme={theme} toggleTheme={toggleTheme} />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
           </div>
-          <div className="alignRight">
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
-          </div>
-        </header>
-        <content>
-          Work in Progress!
-        </content>
-        
-
-        <footer>
-          <small>© Jared Holgate {new Date().getFullYear()}</small>
-        </footer>
+          
+          <Switch>
+            <Route path="/" exact component={() => <Home />} />
+            <Route path="/about" exact component={() => <AboutMe />} />
+          </Switch>
+          <Footer />
+        </Router>
       </>
     </ThemeProvider>
   );
