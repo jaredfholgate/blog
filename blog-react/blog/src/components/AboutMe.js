@@ -12,11 +12,11 @@ const AboutMe = () => {
         <p>With so many emerging technologies and practices, it's an exciting time to be involved in Software Engineering, I look forward to seeing what the next few years bring.</p>
         <p>Outside work I enjoy spending time with family, running (when I'm not injured), hiking, diving, reading science fiction and technology books. Oh and writing a blog if I keep it up!...</p>
         <p>I hope you enjoy the articles.</p>
-        <p>Jared (September 2017)</p>
+        <p>Jared (September 2017) </p>
         <p><a href="https://twitter.com/jaredfholgate" target="_blank" rel="noreferrer">@jaredfholgate</a></p>
       </div>
     </div>
   );
 };
-
+ 
 export default AboutMe;
