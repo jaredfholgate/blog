@@ -13,7 +13,7 @@ const AboutMe = () => {
         <p>Outside work I enjoy spending time with family, running (when I'm not injured), hiking, diving, reading science fiction and technology books. Oh and writing a blog if I keep it up!...</p>
         <p>I hope you enjoy the articles.</p>
         <p>Jared (September 2017)</p>
-        <p><a href="https://twitter.com/jaredfholgate" target="_blank">@jaredfholgate</a></p>
+        <p><a href="https://twitter.com/jaredfholgate" target="_blank" rel="noreferrer">@jaredfholgate</a></p>
       </div>
     </div>
   );
