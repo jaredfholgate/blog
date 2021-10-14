@@ -7,7 +7,7 @@ import rehypeHighlight from 'rehype-highlight'
 function Article(props) {
   const { id } = useParams();
   
-  const article = Articles.find((article) => article.id == id);
+  const article = Articles.find((article) => article.id === Number(id));
   const [post, setPost] = useState('');
 
     useEffect(() => {
