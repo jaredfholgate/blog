@@ -6,7 +6,7 @@ import { GlobalStyles } from './global';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Link, withRouter } from "react-router-dom";
-import { Navigation, Footer, Home, AboutMe } from "./components";
+import { Article, Footer, Home, AboutMe } from "./components";
 
 import { useDarkMode } from './components/useDarkMode';
 import Toggle from './components/Toggle';
@@ -50,6 +50,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={() => <Home />} />
             <Route path="/about" exact component={() => <AboutMe />} />
+            <Route path="/article/:id" exact component={() => <Article />} />
           </Switch>
           <Footer />
         </Router>
