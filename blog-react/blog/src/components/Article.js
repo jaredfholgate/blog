@@ -26,7 +26,7 @@ function Article() {
     
     <div className="home">
       <div class="container">
-        <div class="row align-items-center my-5">
+        <div class="row align-items-center my-2">
           <div class="col-lg-12">
             <h1>{article.title}</h1>
             <hr class="line"/>
@@ -37,7 +37,7 @@ function Article() {
               <div class="col-sm-3">Tags: { article.tags }</div>
             </div>
             <hr class="line"/>
-            <div>
+            <div class="articleContent">
               <ReactMarkdown rehypePlugins={[rehypeHighlight]} children = { post } />
             </div>
           </div>
