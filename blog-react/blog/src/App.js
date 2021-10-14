@@ -36,11 +36,11 @@ function App() {
                     </li>
                     <li class="nav-item">
                       <Link class="nav-link" to="/about">
-                        About Me
+                        About
                       </Link>
                     </li>
                     <li>
-                    <Toggle theme={theme} toggleTheme={toggleTheme} />
+                     <Toggle theme={theme} toggleTheme={toggleTheme} />
                     </li>
                   </ul>
                 </div>

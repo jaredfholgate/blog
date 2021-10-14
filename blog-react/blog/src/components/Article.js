@@ -4,7 +4,7 @@ import Articles from "../articles/articles.json"
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from 'rehype-highlight'
 
-function Article(props) {
+function Article() {
   const { id } = useParams();
   
   const article = Articles.find((article) => article.id === Number(id));
