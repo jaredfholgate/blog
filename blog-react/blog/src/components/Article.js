@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Articles from "../articles/articles.json"
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from 'rehype-highlight'
+import moment from "moment"
 
 function Article() {
   const { id } = useParams();
@@ -30,7 +31,7 @@ function Article() {
             <h1>{article.title}</h1>
             <hr class="line"/>
             <div class="row jfh-summary-meta">
-              <div class="col-sm-3">Published: { article.date }</div>
+              <div class="col-sm-3">Published: { moment(article.date).format("DD MMMM YYYY") }</div>
               <div class="col-sm-3">Author: { article.author }</div>
               <div class="col-sm-3">Category: { article.category }</div>
               <div class="col-sm-3">Tags: { article.tags }</div>

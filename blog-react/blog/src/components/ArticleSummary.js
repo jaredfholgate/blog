@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment"
 
 function ArticleSummary(props) {
   return (
@@ -12,7 +13,7 @@ function ArticleSummary(props) {
         <p>{props.summary}</p>
         <hr class="line" />
         <div class="row jfh-summary-meta">
-          <div class="col-sm-3">Published: {props.date}</div>
+          <div class="col-sm-3">Published: {moment(props.date).format("DD MMMM YYYY")}</div>
           <div class="col-sm-3">Author: {props.author}</div>
           <div class="col-sm-3">Category: {props.category}</div>
           <div class="col-sm-3">Tags: {props.tags}</div>
