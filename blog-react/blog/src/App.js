@@ -30,12 +30,12 @@ function App() {
                 <div>
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                      <Link class="nav-link" to="/">
+                      <Link to="/">
                         Home
                       </Link>
                     </li>
                     <li class="nav-item">
-                      <Link class="nav-link" to="/about">
+                      <Link to="/about">
                         About
                       </Link>
                     </li>

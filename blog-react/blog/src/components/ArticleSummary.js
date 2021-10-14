@@ -8,7 +8,7 @@ function ArticleSummary(props) {
       <div class="panel panel-default">
         <div class="panel-body">
           <h2 class="jfh-header">
-          <Link class="nav-link" to={"/article/" + props.id}>{ props.title }</Link>
+          <Link to={"/article/" + props.id}>{ props.title }</Link>
           </h2>
           <p>{props.summary}</p>
           <hr class="line" />

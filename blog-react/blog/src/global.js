@@ -17,10 +17,14 @@ export const GlobalStyles = createGlobalStyle`
   .line {
     background-color: ${({ theme }) => theme.text};
   }
+  .nav-item a {
+    padding-right: 15px;
+    color: #FAFAFA !important;
+  }
   .container-article {
     background-color: ${({ theme }) => theme.articleSummaryBackground};
     margin-bottom: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding-top: 20px !important;
     padding-bottom: 20px;
   }
