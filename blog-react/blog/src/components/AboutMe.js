@@ -14,9 +14,9 @@ const AboutMe = () => {
             <p>I hope you enjoy the articles.</p>
             <p>Jared (October 2021)</p>
             <p>
-                <a href="https://twitter.com/jaredfholgate" target="_blank">twitter @jaredfholgate</a>
+                <a href="https://twitter.com/jaredfholgate" target="_blank" rel="noreferrer">twitter @jaredfholgate</a>
                 <br/>
-                <a href="https://www.linkedin.com/in/jaredfholgate/" target="_blank">in/jaredfholgate</a>
+                <a href="https://www.linkedin.com/in/jaredfholgate/" target="_blank" rel="noreferrer">in/jaredfholgate</a>
             </p>
           </div>
         </div>

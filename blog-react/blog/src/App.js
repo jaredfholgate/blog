@@ -6,7 +6,7 @@ import { GlobalStyles } from './global';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Article, Footer, Home, AboutMe } from "./components";
 
 import { useDarkMode } from './components/useDarkMode';

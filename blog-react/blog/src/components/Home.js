@@ -1,6 +1,5 @@
 import React from "react";
 import Articles from "../articles/articles.json"
-import Article from "./Article";
 import ArticleSummary from "./ArticleSummary";
 
 function Home() {
