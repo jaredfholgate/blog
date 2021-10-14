@@ -5,6 +5,7 @@ import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import { Link, withRouter } from "react-router-dom";
 import { Article, Footer, Home, AboutMe } from "./components";
 
@@ -12,7 +13,7 @@ import { useDarkMode } from './components/useDarkMode';
 import Toggle from './components/Toggle';
 
 function App() {
-  const [theme, toggleTheme, componentMounted] = useDarkMode();
+  const [theme, toggleTheme ] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (

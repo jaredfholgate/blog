@@ -24,5 +24,5 @@ const AboutMe = () => {
     </div>
   );
 };
-
+ 
 export default AboutMe;
